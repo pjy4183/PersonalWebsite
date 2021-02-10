@@ -1,6 +1,53 @@
 {% extends 'base/main.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Posts template</h1>
+<style>
+    .navbar {
+      overflow: hidden;
+      position: relative;
+      display: block;
+    }
+    
+    .navbar a {
+      float: left;
+      padding: 0px 10px;
+    }
+    </style>
+    <header id="header" class="alt">
+        <div class="navbar">
+            <ul>
+                </li><h3><a href="{% url 'home' %}#banner">Home </a></h3></li>
+                </li><h3><a href="{% url 'home' %}#one">About </a></h3></li>
+                </li><h3><a href="{% url 'home' %}#four">Portfolio </a></h3></li>
+                </li><h3><a href="{% url 'home' %}#footer">Contact</a></h3></li>
+            </ul>
+        </div>
+        <nav>   
+            
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+<section id="four" class="wrapper alt style1">
+    <div class="inner">
+        <h2 class="major">Vitae phasellus</h2>
+        <p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
+        <section class="features">
+            {% for post in posts %}
+            <article>
+                <a href="{% url 'posts' %}" class="image"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
+                <h3 class="major">{{ post.headline}}</h3>
+                <p>{{post.sub_headline}}</p>
+                <a href="{% url 'post' post.id %}" class="special">Learn more</a>
+                <hr>
+                {% for tag in post.tags.all %}
+                    <span class="tag">{{tag}}</span>
+                {% endfor %}
+            </article>
+            {% endfor %}
+            
+        </section>
+    </div>
+</section>
 
 {% endblock content %}
