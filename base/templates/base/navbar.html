@@ -1,13 +1,35 @@
 <!-- Header -->
+<style>
+.navbar {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  top: 0;
+}
+
+.navbar a {
+  float: left;
+  padding: 0px 10px;
+}
+</style>
 <header id="header" class="alt">
-    <h1><a href="{% url 'home' %}">Solid State</a></h1>
-    <nav>
+    <div class="navbar">
+        <ul>
+            </li><h3><a href="{% url 'home' %}">Home </a></h3></li>
+            </li><h3><a href="#one">About </a></h3></li>
+            </li><h3><a href="#four">Portfolio </a></h3></li>
+            </li><h3><a href="#footer">Contact</a></h3></li>
+        </ul>
+    </div>
+    <nav>   
+        
         <a href="#menu">Menu</a>
     </nav>
 </header>
 
 <!-- Menu -->
 <nav id="menu">
+    
     <div class="inner">
         <h2>Menu</h2>
         <ul class="links">
