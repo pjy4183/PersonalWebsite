@@ -35,7 +35,7 @@
         <section class="features">
             {% for post in posts %}
             <article>
-                <a href="{% url 'posts' %}" class="image"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
+                <a href="{% url 'posts' %}" class="image"><img src="{{post.thumbnail.url}}" alt="" /></a>
                 <h3 class="major">{{ post.headline}}</h3>
                 <p>{{post.sub_headline}}</p>
                 <a href="{% url 'post' post.id %}" class="special">Learn more</a>

@@ -2,9 +2,15 @@
 {% load static %}
 
 {% block content %}
+<style>
+    img{
+        max-width: 100%;
+        object-fit: cover;
+    }
+</style>
 <section id="four" class="wrapper alt style1">
     <div class="inner">
-        <img src="{% static 'images/pic01.jpg' %}">
+        <img src="{{post.thumbnail.url}}">
         <h2 class="major">{{post.headline}}</h2>
         <h4>{{post.sub_headline}}</h4>
         <p>{{post.body}}</p>
