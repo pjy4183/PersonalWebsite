@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .forms import PostForm
+
 from .models import Post
 # Create your views here.
 
@@ -21,3 +23,9 @@ def post(request, pk):
     
 def profile(request):
     return render(request, 'base/profile.html')
+
+def createPost(request):
+    form = PostForm()
+    context = {'form': form}
+    return render(request, 'base/post_form.html', context)
+
