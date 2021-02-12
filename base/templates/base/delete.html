@@ -1,0 +1,27 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block content %}
+<script>
+    function goBack() {
+      window.history.back()
+    }
+</script>
+<section id="four" class="wrapper alt style1">
+    <div class="inner">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p>Are you sure you want to delete {{item}}?</p>
+            <!-- <input type="submit" value="Confirm"> -->
+            <div class="col-12">
+                <ul class="actions">
+                    <li><input type="submit" value="Confirm" class="primary" /></li>
+                    <li><button onclick="goBack()">No</button></li>
+                </ul>
+            </div>
+        </form>
+        
+    </div>
+</section>
+
+{% endblock content %}
