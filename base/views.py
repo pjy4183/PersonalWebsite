@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from .forms import PostForm
 
@@ -24,8 +25,28 @@ def post(request, pk):
 def profile(request):
     return render(request, 'base/profile.html')
 
+@login_required(login_url="home")
 def createPost(request):
     form = PostForm()
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('posts')
+    context = {'form': form}
+    return render(request, 'base/post_form.html', context)
+
+@login_required(login_url="home")
+def updatePost(request, pk):
+    post = Post.objects.get(id=pk)
+    form = PostForm(instance=post)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+        return redirect('posts')
     context = {'form': form}
     return render(request, 'base/post_form.html', context)
 
