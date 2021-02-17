@@ -93,7 +93,7 @@
     
 <section id="four" class="wrapper alt style1">
     <div class="inner">
-        <form method='GET'>
+        <form id="searchForm" method='GET'>
             {{myFilter.form}}
             <br>
             <div style="text-align:left"><input class="button primary" type="submit" name="search" value = "search"></div>
@@ -130,21 +130,21 @@
 
                 <ul class="pagination">
                     {% if posts.has_previous %}
-                        <li class="page-item"><a href="?page={{posts.previous_page_number}}" class=page>&laquo</a></li>
-                        <li class="page-item"><a href="?page=1" class=page>First</a></li>
+                        <li class="page-item"><a data-page="{{posts.previous_page_number}}" href="?page={{posts.previous_page_number}}" class=page>&laquo</a></li>
+                        <li class="page-item"><a data-page="1" href="?page=1" class=page>First</a></li>
                     {% endif %}
 
                     {% for i in posts.paginator.page_range %}
                         {% if posts.number == i %}
                             <li class="page-item"><a class="page active">{{i}}</a></li>
                         {% else %}
-                            <li class="page-item"><a href="?page={{i}}" class=page>{{i}}</a></li>
+                            <li class="page-item"><a data-page="{{i}}" href="?page={{i}}" class=page>{{i}}</a></li>
                         {% endif %}
                     {% endfor %}
 
                     {% if posts.has_next %}
-                        <li class="page-item"><a href="?page={{posts.paginator.num_pages}}" class=page>Last</a></li>
-                        <li class="page-item"><a href="?page={{posts.next_page_number}}" class=page>&raquo</a></li>
+                        <li class="page-item"><a data-page="{{posts.paginator.num_pages}}" href="?page={{posts.paginator.num_pages}}" class=page>Last</a></li>
+                        <li class="page-item"><a data-page="{{posts.next_page_number}}" href="?page={{posts.next_page_number}}" class=page>&raquo</a></li>
                     {% endif %}
 
                 </ul>
@@ -152,9 +152,28 @@
         </div>
     </div>
 </section>
+
 {% if request.user.is_authenticated %}
     <ul class="actions stacked" style="text-align:center">
         <li><a href="{% url 'create_post' %}" class="button primary">Create Post</a></li>
     </ul>
 {% endif %}
+
+<script type="text/javascript">
+	let searchForm = document.getElementById('searchForm')
+	let pageLinks = document.getElementsByClassName('page')
+
+	for(var i=0; pageLinks.length > i; i++){
+
+		pageLinks[i].addEventListener('click', function(e){
+			e.preventDefault()
+			let page = this.dataset.page
+			console.log('Page:', page)
+			searchForm.innerHTML += `<input value="${page}" name="page" hidden >`
+			searchForm.submit()
+		})
+
+	}
+</script>
+
 {% endblock content %}
