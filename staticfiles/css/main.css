@@ -2249,7 +2249,7 @@ input, select, textarea {
 		padding: 0.75em 1em;
 	}
 
-	/* input[type="checkbox"],
+	input[type="checkbox"],
 	input[type="radio"] {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -2329,7 +2329,7 @@ input, select, textarea {
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;
-	} */
+	}
 
 	::-webkit-input-placeholder {
 		color: rgba(255, 255, 255, 0.35) !important;
