@@ -13,4 +13,6 @@ urlpatterns = [
     path('delete_post/<str:pk>/', views.deletePost, name='delete_post'),
 
     path('send_email/', views.sendEmail, name='send_email'),
+    path('cadet/', views.cadet, name='cadet'),
+    path('katusa/', views.katusa, name='katusa'),
 ]

@@ -1,0 +1,126 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    img{
+        max-width: 100%;
+        object-fit: cover;
+    }
+    #gallerywrapper {
+     width:640px;
+     height:450px;
+     margin:0 auto;
+     position:relative;
+     font-family:verdana, arial, sans-serif;
+ } 
+
+ #gallerywrapper #gallery {
+     position:absolute;
+     left:0;
+     top:0;
+     height:450px;
+     width:640px;
+     overflow:hidden;
+     text-align:center;
+ } 
+
+ #gallerywrapper #gallery div {
+     width:640px; height:900px; 
+     padding-top:10px; 
+     position:relative;
+ } 
+
+ #gallerywrapper #gallery div img {
+     clear:both; 
+     display:block; 
+     margin:0 auto; 
+     border:0;
+ } 
+
+ #gallerywrapper #gallery div h3 {
+     padding:10px 0 0 0; 
+     margin:0; 
+     font-size:18px;
+ } 
+
+ #gallerywrapper #gallery div p {
+     padding:5px 0; 
+     margin:0; 
+     font-size:12px; 
+     line-height:18px;
+ } 
+
+ #gallery .previous{ 
+     display:inline;
+     float:left;
+     margin-left:80px;
+     text-decoration:none;
+ } 
+
+ #gallery .next{ 
+     display:inline;
+     float:right;
+     margin-right:80px;
+     text-decoration:none;
+ }
+</style>
+<section id="four" class="wrapper alt style1">
+    <div class="inner">
+        <center>
+            <div id="gallerywrapper">
+                <div id="gallery">
+                    <div id="pic1">
+                        <img src="{% static 'images/cadet1.png' %}" height="350" width="500" alt="Image 1">
+                        <a class="previous" href="#pic6">&lt;</a>
+                        <a class="next" href="#pic2">&gt;</a>
+                        <h3>Image 1</h3>
+                    </div>
+                    <div id="pic2">
+                        <img src="{% static 'images/cadet2.jpg' %}" height="350" width="500" alt="Image 2">
+                        <a class="previous" href="#pic1">&lt;</a>
+                        <a class="next" href="#pic3">&gt;</a>
+                        <h3>Image 2</h3>
+                    </div>
+                    <div id="pic3">
+                        <img src="{% static 'images/cadet3.jpg' %}" height="350" width="500" alt="Image 3">
+                        <a class="previous" href="#pic2">&lt;</a>
+                        <a class="next" href="#pic4">&gt;</a>
+                        <h3>Image 3</h3>
+                    </div>
+                    <div id="pic4">
+                        <img src="{% static 'images/cadet4.jpg' %}" height="350" width="500" alt="Image 4">
+                        <a class="previous" href="#pic3">&lt;</a>
+                        <a class="next" href="#pic5">&gt;</a>
+                        <h3>Image 4</h3>
+                    </div>
+                    <div id="pic5">
+                        <img src="{% static 'images/cadet5.jpg' %}" height="350" width="500" alt="Image 5">
+                        <a class="previous" href="#pic4">&lt;</a>
+                        <a class="next" href="#pic6">&gt;</a>
+                        <h3>Image 5</h3>
+                    </div>
+                    <div id="pic6">
+                        <img src="{% static 'images/cadet6.png' %}" height="410" width="450" alt="Image 6">
+                        <a class="previous" href="#pic5">&lt;</a>
+                        <a class="next" href="#pic1">&gt;</a>
+                        <h3>Image 6</h3>
+                    </div>
+                </div>
+            </div>
+        </center>
+        <h2 class="major">Corps of Cadets, Texas A&M University </h2>
+        <h4>Inspector General Sergeant (Jan 2017 – Present)</h4>
+        <p>Corps of Cadets is a military program that builds up students into better individual physically, mentally, and characteristically. It improved time management skills in between intensive school works and Corps program.
+            <br><br>
+            I Organize, administer, and oversee the various policies concerning and regulating the military bearing of the Corps as a
+            cohesive, unified outfit.
+            I also lead, mentor, and collaborate with cadets to help each other learn, practice, and develop critical leadership skills
+            
+            </p>
+        <a id="back-btn" class="button" href="{% url 'home' %}">BACK TO HOME</a>
+    </div>
+</section>
+
+{% endblock content %}
+

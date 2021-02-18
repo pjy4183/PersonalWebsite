@@ -41,6 +41,12 @@ def post(request, pk):
     post = Post.objects.get(id=pk)
     context = {'post': post}
     return render(request, 'base/post.html', context)
+
+def cadet(request):
+    return render(request, 'base/cadet.html')
+
+def katusa(request):
+    return render(request, 'base/katusa.html')
     
 def profile(request):
     return render(request, 'base/profile.html')
