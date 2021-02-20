@@ -99,13 +99,13 @@
             <div style="text-align:left"><input class="button primary" type="submit" name="search" value = "search"></div>
         </form>
             
-        <h2 class="major">Vitae phasellus</h2>
+        <h2 class="major">PORTFOLIO</h2>
             
-        <p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
+        <p>Please look around what I done and what I achieved</p>
         <section class="features">
             {% for post in posts %}
             <article>
-                <a href="{% url 'posts' %}" class="image"><img src="{{post.thumbnail.url}}" alt="" /></a>
+                <a href="{% url 'post' post.id %}" class="image"><img src="{{post.thumbnail.url}}" alt="" /></a>
                 <h3 class="major">{{ post.headline}}</h3>
                 <p>{{post.sub_headline}}</p>
                 <a href="{% url 'post' post.id %}" class="special">Learn more</a>
