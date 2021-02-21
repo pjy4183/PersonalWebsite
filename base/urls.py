@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import SignUpView
 
 
 urlpatterns = [
@@ -15,4 +16,6 @@ urlpatterns = [
     path('send_email/', views.sendEmail, name='send_email'),
     path('cadet/', views.cadet, name='cadet'),
     path('katusa/', views.katusa, name='katusa'),
+
+    path('signup/', SignUpView.as_view(), name='signup'),
 ]

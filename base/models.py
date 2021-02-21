@@ -19,6 +19,6 @@ class Post(models.Model):
     featured = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, null=True,)
     #slug =
-
+    
     def __str__(self):
         return self.headline

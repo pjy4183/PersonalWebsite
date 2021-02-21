@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'ckeditor',
     'ckeditor_uploader',
+    'admin_reorder',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 ROOT_URLCONF = 'mywebsite.urls'
@@ -156,3 +158,29 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     }
 }
+
+ADMIN_REORDER = (
+    # Keep original label and models
+    'sites',
+
+    # Rename app
+    {'app': 'auth', 'label': 'Authorisation'},
+
+    # Reorder app models
+    {'app': 'auth', 'models': ('auth.User', 'auth.Group')},
+
+    # Exclude models
+    {'app': 'auth', 'models': ('auth.User', )},
+
+    # Cross-linked models
+    {'app': 'auth', 'models': ('auth.User', 'sites.Site')},
+
+    # models with custom name
+    {'app': 'auth', 'models': (
+        'auth.Group',
+        {'model': 'auth.User', 'label': 'Staff'},
+    )},
+)
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"

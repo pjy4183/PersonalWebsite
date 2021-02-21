@@ -4,6 +4,13 @@ from django.contrib import admin
 
 from .models import Post, Tag
 
-admin.site.register(Post)
-admin.site.register(Tag)
+class SnippetAdmin(admin.ModelAdmin):
+    list_display = ('headline','created')
 
+    def get_queryset(self, request):
+        queryset = super(SnippetAdmin, self).get_queryset(request)
+        queryset = queryset.order_by('headline')
+        return queryset
+
+admin.site.register(Post, SnippetAdmin)
+admin.site.register(Tag)

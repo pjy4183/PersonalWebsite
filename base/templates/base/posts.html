@@ -73,24 +73,33 @@
         margin-bottom: 0;
         font-weight: normal;
     }
-    
-   
-    </style>
-    <header id="header" class="alt">
-        <div class="navbar">
-            <ul>
-                </li><h3><a href="{% url 'home' %}#banner">Home </a></h3></li>
-                </li><h3><a href="{% url 'home' %}#one">About </a></h3></li>
-                </li><h3><a href="{% url 'home' %}#four">Portfolio </a></h3></li>
-                </li><h3><a href="{% url 'home' %}#footer">Contact</a></h3></li>
-            </ul>
-        </div>
-        <nav>   
+    .navbar {
+                overflow: hidden;
+                position: relative;
+                display: block;
+                top: 0;
+                }
             
-            <a href="#menu">Menu</a>
-        </nav>
-    </header>
-    
+                .navbar a {
+                float: left;
+                padding: 0px 10px;
+                }
+            
+    </style>
+    <body class="is-preload">
+        <div id="page-wrapper">
+            
+            <header id="header" class="alt">
+                <div class="navbar">
+                    <ul>
+                        </li><h3><a href="{% url 'home' %}">Home </a></h3></li>
+                        </li><h3><a href="{% url 'home' %}#one">About </a></h3></li>
+                        </li><h3><a href="{% url 'home' %}#four">Portfolio </a></h3></li>
+                        </li><h3><a href="{% url 'home' %}#footer">Contact</a></h3></li>
+                    </ul>
+                </div>
+            
+            </header>
 <section id="four" class="wrapper alt style1">
     <div class="inner">
         <form id="searchForm" method='GET'>
@@ -111,7 +120,7 @@
                 <a href="{% url 'post' post.id %}" class="special">Learn more</a>
                 <div class="row">
                     
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_staff %}
                         <a href="{% url 'update_post' post.id %}" class="special">Edit post</a>
                         <a href="{% url 'delete_post' post.id %}" class="special">Delete post</a>
                     {% endif %}
@@ -152,8 +161,8 @@
         </div>
     </div>
 </section>
-
-{% if request.user.is_authenticated %}
+</div>
+{% if request.user.is_staff %}
     <ul class="actions stacked" style="text-align:center">
         <li><a href="{% url 'create_post' %}" class="button primary">Create Post</a></li>
     </ul>
@@ -175,5 +184,5 @@
 
 	}
 </script>
-
+</body>
 {% endblock content %}

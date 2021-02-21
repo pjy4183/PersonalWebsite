@@ -1,43 +1,39 @@
 {% extends 'base/main.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
 <style>
-    img{
-        max-width: 100%;
-        object-fit: cover;
-    }
     .navbar {
-    overflow: hidden;
-    position: relative;
-    display: block;
-    top: 0;
+      overflow: hidden;
+      position: relative;
+      display: block;
     }
-
+    
     .navbar a {
-    float: left;
-    padding: 0px 10px;
+      float: left;
+      padding: 0px 10px;
     }
-
 </style>
 <header id="header" class="alt">
     <div class="navbar">
         <ul>
-            </li><h3><a href="{% url 'home' %}">Home </a></h3></li>
+            </li><h3><a href="{% url 'home' %}#banner">Home </a></h3></li>
             </li><h3><a href="{% url 'home' %}#one">About </a></h3></li>
             </li><h3><a href="{% url 'home' %}#four">Portfolio </a></h3></li>
             </li><h3><a href="{% url 'home' %}#footer">Contact</a></h3></li>
         </ul>
     </div>
-
+    
 </header>
 <section id="four" class="wrapper alt style1">
     <div class="inner">
-        <img src="{{post.thumbnail.url}}">
-        <h2 class="major">{{post.headline}}</h2>
-        <h4>{{post.sub_headline}}</h4>
-        <p>{{post.body|safe}}</p>
-        <a id="back-btn" class="button" href="{% url 'posts' %}">BACK TO PORTFOLIO</a>
+        <form method="post" class="from-group">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit">Sign Up</button>
+        </form>
     </div>
 </section>
 
